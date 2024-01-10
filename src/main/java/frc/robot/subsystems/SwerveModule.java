@@ -4,11 +4,16 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkMax;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class SwerveModule extends SubsystemBase {
   /** Creates a new SwerveModule. */
-  public SwerveModule() {}
+  public SwerveModule() {
+
+      final CANSparkMax driveMotor;
+  }
 
   @Override
   public void periodic() {
