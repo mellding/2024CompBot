@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
@@ -22,6 +23,7 @@ public class SwerveModule {
     private final RelativeEncoder turnEncoder;
 
     private final PIDController turnPidController;
+    private final SparkPIDController turnSparkPIDController;
 
     private final CANcoder absoluteEncoder;
     private final boolean absoluteEncoderReversed;
@@ -52,8 +54,14 @@ public class SwerveModule {
         turnEncoder.setPositionConversionFactor(ModuleConstants.kTurnEncoderRot2Rad);
         turnEncoder.setVelocityConversionFactor(ModuleConstants.kTurnEncoderRPM2RadPerSec);
 
+        //Roborio PID controller, should switch to Spark max pid controller
         turnPidController = new PIDController(ModuleConstants.kPTurning, 0, 0);
         turnPidController.enableContinuousInput(-Math.PI, Math.PI);
+
+        turnSparkPIDController = turnMotor.getPIDController();
+
+        driveMotor.burnFlash();
+        turnMotor.burnFlash();
 
         resetEncoders();
     }

@@ -45,6 +45,18 @@ public final class Constants {
       public static final int GYRO_ID = 16;
     }
 
+    public final class Feeder{
+        public static final int outerMotorID = 0;
+        public static final int innerMotorID = 0;
+        public static final int positionMotorID = 0;
+
+        public static final double outerMotorKP = 0.01;
+        public static final double outerMotorKI = 0.0;
+        public static final double outerMotorKD = 0.0;
+        public static final double outerMotorMAX = 1.0;
+        public static final double outerMotorMIN = -1.0;
+    }
+
     public static final class DriveConstants {
 
         public static final double kTrackWidth = Units.inchesToMeters(21);
