@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.ColorSensorV3;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
@@ -18,6 +19,10 @@ public class feederSubsystem extends SubsystemBase {
   public final CANSparkMax outerMotor;
   public final CANSparkMax innerMotor;
   public final CANSparkMax positionMotor;
+
+  public final RelativeEncoder outerMotorEncoder;
+  public final RelativeEncoder innerMotorEncoder;
+  public final RelativeEncoder positionEncoder;
 
   public final SparkPIDController positionPID;
   public final SparkPIDController outerMotorPID;
@@ -34,7 +39,7 @@ public class feederSubsystem extends SubsystemBase {
 
     outerMotor = new CANSparkMax(Feeder.outerMotorID, MotorType.kBrushless);
     outerMotor.restoreFactoryDefaults();
-    outerMotor.getEncoder();
+    outerMotorEncoder = outerMotor.getEncoder();
     outerMotorPID = outerMotor.getPIDController();
     outerMotorPID.setP(Feeder.outerMotorKP);
     outerMotorPID.setI(Feeder.outerMotorKI);
@@ -44,11 +49,13 @@ public class feederSubsystem extends SubsystemBase {
 
     innerMotor = new CANSparkMax(Feeder.innerMotorID, MotorType.kBrushless);
     innerMotor.restoreFactoryDefaults();
+    innerMotorEncoder = innerMotor.getEncoder();
     innerMotorPID = innerMotor.getPIDController();
 
 
     positionMotor = new CANSparkMax(Feeder.positionMotorID, MotorType.kBrushless);
     positionMotor.restoreFactoryDefaults();
+    positionEncoder = positionMotor.getEncoder();
     positionPID = positionMotor.getPIDController();
 
     
