@@ -39,6 +39,8 @@ public final class Constants {
         public static final double kDriveEncoderRPM2MeterPerSec = kDriveEncoderRot2Meter / 60;
         public static final double kTurnEncoderRPM2RadPerSec = kTurnEncoderRot2Rad / 60;
         public static final double kPTurning = 0.6;
+        public static int kDriveMotorCurrentLimit = 30;
+        public static int kTurnMotorCurrentLimit = 30;
     }
 
     public final class Sensors{
@@ -55,6 +57,19 @@ public final class Constants {
         public static final double outerMotorKD = 0.0;
         public static final double outerMotorMAX = 1.0;
         public static final double outerMotorMIN = -1.0;
+        public static final double innerMotorKP = 0.01;
+        public static final double innerMotorKI = 0.0;
+        public static final double innerMotorKD = 0.0;
+        public static final int outerMotorCurrentLimit = 10;
+        public static final int innerMotorCurrentLimit = 10;
+        public static final int positionMotorCurrentLimit = 5;
+        public static final double innerMotorMIN = -1.0;
+        public static final double innerMotorMAX = 1.0;
+        public static final double positionMotorKP = 0.01;
+        public static final double positionMotorKI = 0.0;
+        public static final double positionMotorKD = 0.0;
+        public static final double positionMotorMIN = -0.25;
+        public static final double positionMotorMAX = 0.25;
     }
 
     public static final class DriveConstants {

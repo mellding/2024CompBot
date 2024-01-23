@@ -60,6 +60,9 @@ public class SwerveModule {
 
         turnSparkPIDController = turnMotor.getPIDController();
 
+        driveMotor.setSmartCurrentLimit(ModuleConstants.kDriveMotorCurrentLimit);
+        turnMotor.setSmartCurrentLimit(ModuleConstants.kTurnMotorCurrentLimit);
+
         driveMotor.burnFlash();
         turnMotor.burnFlash();
 

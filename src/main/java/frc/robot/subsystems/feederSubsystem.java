@@ -39,6 +39,8 @@ public class feederSubsystem extends SubsystemBase {
 
     outerMotor = new CANSparkMax(Feeder.outerMotorID, MotorType.kBrushless);
     outerMotor.restoreFactoryDefaults();
+    outerMotor.setSmartCurrentLimit(Feeder.outerMotorCurrentLimit);
+
     outerMotorEncoder = outerMotor.getEncoder();
     outerMotorPID = outerMotor.getPIDController();
     outerMotorPID.setP(Feeder.outerMotorKP);
@@ -49,15 +51,26 @@ public class feederSubsystem extends SubsystemBase {
 
     innerMotor = new CANSparkMax(Feeder.innerMotorID, MotorType.kBrushless);
     innerMotor.restoreFactoryDefaults();
+    innerMotor.setSmartCurrentLimit(Feeder.innerMotorCurrentLimit);
+
     innerMotorEncoder = innerMotor.getEncoder();
     innerMotorPID = innerMotor.getPIDController();
+    innerMotorPID.setP(Feeder.innerMotorKP);
+    innerMotorPID.setI(Feeder.innerMotorKI);
+    innerMotorPID.setD(Feeder.innerMotorKD);
+    outerMotorPID.setOutputRange(Feeder.innerMotorMIN, Feeder.innerMotorMAX);
 
 
     positionMotor = new CANSparkMax(Feeder.positionMotorID, MotorType.kBrushless);
     positionMotor.restoreFactoryDefaults();
+    positionMotor.setSmartCurrentLimit(Feeder.positionMotorCurrentLimit);
+
     positionEncoder = positionMotor.getEncoder();
     positionPID = positionMotor.getPIDController();
-
+    positionPID.setP(Feeder.positionMotorKP);
+    positionPID.setI(Feeder.positionMotorKI);
+    positionPID.setD(Feeder.positionMotorKD);
+    positionPID.setOutputRange(Feeder.positionMotorMIN, Feeder.positionMotorMAX);
     
     
     proxSensor = new ColorSensorV3(i2cPort);
